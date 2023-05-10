@@ -1,16 +1,19 @@
 const express = require("express");
 const app = express();
-const PORT = 8080
-const pdctRouter = require("./src/routes/products.routes.js");
-const cartRouter = require("./src/routes/cart.routes.js");
+const PORT = 8080 || process.env.PORT;
+const pdctRouter = require("../src/routes/products.routes");
+const cartRouter = require("../src/routes/cart.routes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-apiRouter.use("/products", pdctRouter)
-apiRouter.use("/carts", cartRouter)
+app.use("/api/products", pdctRouter);
+app.use("/api/carts", cartRouter);
 
+app.get("/", (req, res) => {
+    res.send("<h1>PreEntrega! 1</h1>");
+});
 try {
     app.listen(PORT, () =>
         console.log(
@@ -20,3 +23,7 @@ try {
 } catch (error) {
     console.log("Error al iniciar servidor", error);
 }
+
+
+
+

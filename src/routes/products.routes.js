@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const router = Router();
-const ProductManager = require("./src/managers/productManager.js");
-const myManager = new ProductManager('./src/data/products.json');
-export const pdctRouter = Router()
+const ProductManager = require("../managers/productManager.js");
+const path = '../data/products.json'
+const myManager = new ProductManager(path);
+const pdctRouter = Router()
 
 pdctRouter.get("/", async (req, res) => {
     try {

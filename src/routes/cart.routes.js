@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const router = Router();
-const CartManager = require("./src/managers/cartManager.js");
-const cartManager = new CartManager('./src/data/carts.json');
-export const cartRouter = Router()
+const CartManager = require("../managers/cartManager");
+const path = './src/data/carts.json';
+const cartManager = new CartManager(path);
+const cartRouter = Router()
 
 
 cartRouter.post("/", async (req, res) => {
